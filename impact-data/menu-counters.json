@@ -1,10 +1,10 @@
 {
   "page": "menu-principal",
-  "updatedAt": "2026-06-23T17:42:28.008Z",
+  "updatedAt": "2026-06-23T17:42:49.903Z",
   "totals": {
     "buenas-practicas": 1,
     "clasificacion-residuos": 1,
-    "datos-bancarios": 0,
+    "datos-bancarios": 1,
     "emergencias": 0,
     "reglas-parque": 0
   }
