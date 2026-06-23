@@ -72,7 +72,7 @@ const select=document.getElementById('language-select');function apply(value){co
       paint(id,next,true);
       if(!normalClick)send(id,true).catch(()=>{});
     }finally{
-      if(normalClick)window.location.href=href;
+      if(normalClick){try{sessionStorage.setItem('muyuyo-impact-navigation:'+id,'1')}catch(e){}window.location.href=href;}
     }
   }));
   if(endpoint){
@@ -83,6 +83,7 @@ const select=document.getElementById('language-select');function apply(value){co
 })();
 </script><script src="muyuyo-common.js"></script>
 </body></html>
+
 
 
 
