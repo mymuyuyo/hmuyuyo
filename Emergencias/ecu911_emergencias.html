@@ -339,7 +339,23 @@ function render(code) {
 
 render(detectLang());
 </script>
+<script>
+/* muyuyo-page-open-impact-counter */
+(function(){
+  const endpoint='https://muyuyo-impact-counter.mymuyuyo.workers.dev/';
+  const card='emergencias';
+  const flag='muyuyo-impact-navigation:'+card;
+  try{if(sessionStorage.getItem(flag)==='1'){sessionStorage.removeItem(flag);return;}}catch(error){}
+  const body=JSON.stringify({page:'menu-principal',card,ts:new Date().toISOString(),ua:navigator.userAgent,lang:navigator.language,source:location.pathname});
+  if('sendBeacon' in navigator){
+    navigator.sendBeacon(endpoint,new Blob([body],{type:'application/json'}));
+  }else{
+    fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body,keepalive:true}).catch(()=>{});
+  }
+})();
+</script>
 </body>
 </html>
+
 
 
