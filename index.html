@@ -41,7 +41,7 @@ const select=document.getElementById('language-select');function apply(value){co
     if(!node)return;
     const strong=node.querySelector('strong');
     node.firstChild.nodeValue=label+': ';
-    if(strong)strong.textContent=Number(value||0).toLocaleString();
+    if(strong)strong.textContent=value==null?'...':Number(value||0).toLocaleString();
     node.classList.toggle('is-pending',!!pending);
   };
   const payload=id=>JSON.stringify({page,card:id,ts:new Date().toISOString(),ua:navigator.userAgent,lang:navigator.language});
@@ -56,15 +56,15 @@ const select=document.getElementById('language-select');function apply(value){co
     if(!res.ok)throw new Error('impact endpoint failed');
     return await res.json();
   };
-  cards.forEach(card=>paint(card.dataset.impactId,readLocal(card.dataset.impactId),!endpoint));
+  cards.forEach(card=>paint(card.dataset.impactId,endpoint?null:readLocal(card.dataset.impactId),!!endpoint));
   cards.forEach(card=>card.addEventListener('click',async event=>{
     const id=card.dataset.impactId;
     const href=card.href;
     const normalClick=event.button===0&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey&&href;
     if(normalClick)event.preventDefault();
     const next=readLocal(id)+1;
-    writeLocal(id,next);
-    paint(id,next,!endpoint);
+    if(!endpoint)writeLocal(id,next);
+    paint(id,endpoint?null:next,!!endpoint);
     try{
       const data=await send(id,false);
       if(data&&data.totals&&data.totals[id]!=null)paint(id,data.totals[id],false);
@@ -83,6 +83,7 @@ const select=document.getElementById('language-select');function apply(value){co
 })();
 </script><script src="muyuyo-common.js"></script>
 </body></html>
+
 
 
 
