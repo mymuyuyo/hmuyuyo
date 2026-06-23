@@ -25,7 +25,7 @@
 const T={"es":{"eyebrow":"Gal\u00e1pagos - gu\u00eda para hu\u00e9spedes","title":"Hostal Muyuyo","subtitle":"Toda la informaci\u00f3n esencial para tu estad\u00eda, reunida en una gu\u00eda r\u00e1pida","language":"Idioma","open":"Abrir","aedsTitle":"Buenas pr\u00e1cticas","aedsText":"Agua, energ\u00eda y uso sanitario responsable durante la estad\u00eda.","wasteTitle":"Clasificaci\u00f3n de residuos","wasteText":"Gu\u00eda visual por color de tacho para separar correctamente.","bankTitle":"Datos bancarios","bankText":"Cuentas para transferencia y botones de copia r\u00e1pida.","emergencyTitle":"Emergencias","emergencyText":"N\u00famero ECU 911 disponible 24 horas en Ecuador.","rulesTitle":"Reglas del Parque Nacional","rulesText":"Normas de visita para proteger Gal\u00e1pagos."},"en":{"eyebrow":"Galapagos - guest guide","title":"Hostal Muyuyo","subtitle":"Essential information for your stay in a fast, clear guide","language":"Language","open":"Open","aedsTitle":"Good practices","aedsText":"Water, energy and responsible sanitary use during your stay.","wasteTitle":"Waste sorting","wasteText":"Visual bin-color guide for correct separation.","bankTitle":"Bank details","bankText":"Transfer accounts and quick copy buttons.","emergencyTitle":"Emergencies","emergencyText":"ECU 911 emergency number available 24 hours in Ecuador.","rulesTitle":"National Park rules","rulesText":"Visitor rules to protect Galapagos."},"fr":{"eyebrow":"Galapagos - guide clients","title":"Hostal Muyuyo","subtitle":"Informations essentielles pour votre sejour, reunies dans un guide rapide","language":"Langue","open":"Ouvrir","aedsTitle":"Bonnes pratiques","aedsText":"Eau, energie et usage sanitaire responsable.","wasteTitle":"Tri des dechets","wasteText":"Guide visuel par couleur de bac.","bankTitle":"Coordonnees bancaires","bankText":"Comptes de virement et copie rapide.","emergencyTitle":"Urgences","emergencyText":"ECU 911 disponible 24 h/24 en Equateur.","rulesTitle":"Regles du Parc National","rulesText":"Regles de visite pour proteger Galapagos."},"de":{"eyebrow":"Galapagos - Gaestefuehrer","title":"Hostal Muyuyo","subtitle":"Wichtige Informationen fuer Ihren Aufenthalt, zusammengefasst in einem schnellen Leitfaden","language":"Sprache","open":"Oeffnen","aedsTitle":"Gute Praktiken","aedsText":"Wasser, Energie und verantwortungsvolle sanitaere Nutzung.","wasteTitle":"Abfalltrennung","wasteText":"Visueller Leitfaden nach Tonnenfarbe.","bankTitle":"Bankdaten","bankText":"Konten fuer Ueberweisungen und Kopierfunktionen.","emergencyTitle":"Notfaelle","emergencyText":"ECU 911 ist in Ecuador rund um die Uhr verfuegbar.","rulesTitle":"Regeln des Nationalparks","rulesText":"Besuchsregeln zum Schutz von Galapagos."},"pt":{"eyebrow":"Galapagos - guia para hospedes","title":"Hostal Muyuyo","subtitle":"Informacoes essenciais para a sua estadia, reunidas em um guia rapido","language":"Idioma","open":"Abrir","aedsTitle":"Boas praticas","aedsText":"Agua, energia e uso sanitario responsavel.","wasteTitle":"Classificacao de residuos","wasteText":"Guia visual por cor de lixeira.","bankTitle":"Dados bancarios","bankText":"Contas para transferencia e copia rapida.","emergencyTitle":"Emergencias","emergencyText":"ECU 911 disponivel 24 horas no Equador.","rulesTitle":"Regras do Parque Nacional","rulesText":"Normas de visita para proteger Galapagos."},"ja":{"eyebrow":"ガラパゴス - 宿泊者ガイド","title":"Hostal Muyuyo","subtitle":"必要な滞在情報を、すばやく見られるガイドにまとめました","language":"言語","open":"開く","aedsTitle":"よい過ごし方","aedsText":"滞在中の水、エネルギー、衛生利用のお願いです。","wasteTitle":"ごみの分別","wasteText":"色別のごみ箱で正しく分別するための案内です。","bankTitle":"銀行情報","bankText":"送金用口座とすばやくコピーできるボタンです。","emergencyTitle":"緊急時","emergencyText":"エクアドルではECU 911が24時間利用できます。","rulesTitle":"国立公園のルール","rulesText":"ガラパゴスを守るための訪問ルールです。"},"ko":{"eyebrow":"갈라파고스 - 투숙객 안내","title":"Hostal Muyuyo","subtitle":"숙박에 필요한 정보를 빠른 안내서에 모았습니다","language":"언어","open":"열기","aedsTitle":"좋은 이용 습관","aedsText":"숙박 중 물, 에너지, 위생 시설을 책임 있게 이용하는 안내입니다.","wasteTitle":"쓰레기 분리","wasteText":"색상별 쓰레기통에 올바르게 분리하는 안내입니다.","bankTitle":"은행 정보","bankText":"송금 계좌와 빠른 복사 버튼입니다.","emergencyTitle":"긴급 상황","emergencyText":"에콰도르에서는 ECU 911을 24시간 이용할 수 있습니다.","rulesTitle":"국립공원 규칙","rulesText":"갈라파고스를 보호하기 위한 방문 규칙입니다."}};
 function norm(l){l=(l||'es').toLowerCase();if(l.startsWith('ja'))return'ja';if(l.startsWith('ko'))return'ko';if(l.startsWith('fr'))return'fr';if(l.startsWith('de'))return'de';if(l.startsWith('pt'))return'pt';if(l.startsWith('en'))return'en';return'es';}
 const select=document.getElementById('language-select');function apply(value){const lang=value==='auto'?norm(navigator.language):value;const t=T[lang]||T.es;document.documentElement.lang=lang;document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;if(t[key])el.textContent=t[key]});localStorage.setItem('muyuyo-main-lang',value)}select.value='auto';select.addEventListener('change',()=>apply(select.value));apply('auto');
-</script><script>
+</script><script>window.MUYUYO_IMPACT_ENDPOINT="https://muyuyo-impact-counter.mymuyuyo.workers.dev/";</script><script>
 /* muyuyo-main-impact-counter */
 (function(){
   const labels={es:'Vistas',en:'Views',fr:'Vues',de:'Aufrufe',pt:'Visualizações',ja:'表示',ko:'조회'};
@@ -44,9 +44,15 @@ const select=document.getElementById('language-select');function apply(value){co
     if(strong)strong.textContent=Number(value||0).toLocaleString();
     node.classList.toggle('is-pending',!!pending);
   };
-  const send=async(id)=>{
+  const payload=id=>JSON.stringify({page,card:id,ts:new Date().toISOString(),ua:navigator.userAgent,lang:navigator.language});
+  const send=async(id,beacon=false)=>{
     if(!endpoint)return null;
-    const res=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page,card:id,ts:new Date().toISOString(),ua:navigator.userAgent,lang:navigator.language})});
+    const body=payload(id);
+    if(beacon&&'sendBeacon' in navigator){
+      const queued=navigator.sendBeacon(endpoint,new Blob([body],{type:'application/json'}));
+      if(queued)return {queued:true};
+    }
+    const res=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body,keepalive:true});
     if(!res.ok)throw new Error('impact endpoint failed');
     return await res.json();
   };
@@ -56,7 +62,7 @@ const select=document.getElementById('language-select');function apply(value){co
     const next=readLocal(id)+1;
     writeLocal(id,next);
     paint(id,next,!endpoint);
-    send(id).then(data=>{if(data&&data.totals&&data.totals[id]!=null)paint(id,data.totals[id],false);}).catch(()=>paint(id,next,true));
+    send(id,true).then(data=>{if(data&&data.totals&&data.totals[id]!=null)paint(id,data.totals[id],false);if(data&&data.queued)paint(id,next,false);}).catch(()=>paint(id,next,true));
   }));
   if(endpoint){
     fetch(endpoint+'?page='+encodeURIComponent(page)).then(r=>r.ok?r.json():null).then(data=>{
@@ -66,6 +72,10 @@ const select=document.getElementById('language-select');function apply(value){co
 })();
 </script><script src="muyuyo-common.js"></script>
 </body></html>
+
+
+
+
 
 
 
