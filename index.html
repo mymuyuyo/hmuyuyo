@@ -57,12 +57,23 @@ const select=document.getElementById('language-select');function apply(value){co
     return await res.json();
   };
   cards.forEach(card=>paint(card.dataset.impactId,readLocal(card.dataset.impactId),!endpoint));
-  cards.forEach(card=>card.addEventListener('click',()=>{
+  cards.forEach(card=>card.addEventListener('click',async event=>{
     const id=card.dataset.impactId;
+    const href=card.href;
+    const normalClick=event.button===0&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey&&href;
+    if(normalClick)event.preventDefault();
     const next=readLocal(id)+1;
     writeLocal(id,next);
     paint(id,next,!endpoint);
-    send(id,true).then(data=>{if(data&&data.totals&&data.totals[id]!=null)paint(id,data.totals[id],false);if(data&&data.queued)paint(id,next,false);}).catch(()=>paint(id,next,true));
+    try{
+      const data=await send(id,false);
+      if(data&&data.totals&&data.totals[id]!=null)paint(id,data.totals[id],false);
+    }catch(error){
+      paint(id,next,true);
+      if(!normalClick)send(id,true).catch(()=>{});
+    }finally{
+      if(normalClick)window.location.href=href;
+    }
   }));
   if(endpoint){
     fetch(endpoint+'?page='+encodeURIComponent(page)).then(r=>r.ok?r.json():null).then(data=>{
@@ -72,6 +83,7 @@ const select=document.getElementById('language-select');function apply(value){co
 })();
 </script><script src="muyuyo-common.js"></script>
 </body></html>
+
 
 
 
